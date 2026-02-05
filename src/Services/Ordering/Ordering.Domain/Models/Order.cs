@@ -44,7 +44,7 @@
             Payment = payment;
             Status = status;
 
-            AddDomainEvent(new OrderUpdatedEvent(this));//почему не как при создании
+            AddDomainEvent(new OrderUpdatedEvent(this));
         }
 
         public void Add(ProductId productId, int quantity, decimal price)
@@ -52,7 +52,7 @@
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(quantity);
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
 
-            var orderItem = new OrderItem(Id, productId, quantity, price);//откуда айди
+            var orderItem = new OrderItem(Id, productId, quantity, price);
             _orderItems.Add(orderItem);
         }
 

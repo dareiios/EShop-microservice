@@ -7,8 +7,6 @@
 
         public static Product Create(ProductId id, string name, decimal price)
         {
-            //почему нет контрруктора
-
             ArgumentException.ThrowIfNullOrWhiteSpace(name);
             ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
 
