@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
+﻿using BuildingBlocks.Behaviors;
 
 namespace Ordering.Application
 {
@@ -12,6 +11,8 @@ namespace Ordering.Application
             {
                 //auto registration of all handlers
                 cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+                cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
+                cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
             });
 
             return services;

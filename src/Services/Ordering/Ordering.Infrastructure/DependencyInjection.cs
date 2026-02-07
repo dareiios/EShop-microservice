@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+using Ordering.Application.Data;
 
 namespace Ordering.Infrastructure
 {
@@ -12,6 +13,7 @@ namespace Ordering.Infrastructure
 
             services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
             services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+            services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
 
             // Add services to the container.
             services.AddDbContext<ApplicationDbContext>((sp, opt) =>
