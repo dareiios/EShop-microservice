@@ -1,6 +1,4 @@
-﻿using Ordering.Application.Data;
-
-namespace Ordering.Application.Orders.Commands.CreateOrder
+﻿namespace Ordering.Application.Orders.Commands.CreateOrder
 {
     public class CreateOrderHandler(IApplicationDbContext dbContext)
     : ICommandHandler<CreateOrderCommand, CreateOrderResult>
@@ -22,21 +20,21 @@ namespace Ordering.Application.Orders.Commands.CreateOrder
         private Order CreateNewOrder(OrderDto orderDto)
         {
             var shippingAddress = Address
-                .Of(orderDto.ShippingAddress.FirstName, 
-                orderDto.ShippingAddress.LastName, 
+                .Of(orderDto.ShippingAddress.FirstName,
+                orderDto.ShippingAddress.LastName,
                 orderDto.ShippingAddress.EmailAddress,
-                orderDto.ShippingAddress.AddressLine, 
-                orderDto.ShippingAddress.Country, 
-                orderDto.ShippingAddress.State, 
+                orderDto.ShippingAddress.AddressLine,
+                orderDto.ShippingAddress.Country,
+                orderDto.ShippingAddress.State,
                 orderDto.ShippingAddress.ZipCode);
-            
+
             var billingAddress = Address
-                .Of(orderDto.BillingAddress.FirstName, 
-                orderDto.BillingAddress.LastName, 
-                orderDto.BillingAddress.EmailAddress, 
-                orderDto.BillingAddress.AddressLine, 
-                orderDto.BillingAddress.Country, 
-                orderDto.BillingAddress.State, 
+                .Of(orderDto.BillingAddress.FirstName,
+                orderDto.BillingAddress.LastName,
+                orderDto.BillingAddress.EmailAddress,
+                orderDto.BillingAddress.AddressLine,
+                orderDto.BillingAddress.Country,
+                orderDto.BillingAddress.State,
                 orderDto.BillingAddress.ZipCode);
 
             var payment = Payment
