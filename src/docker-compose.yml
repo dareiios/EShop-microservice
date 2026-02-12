@@ -1,4 +1,4 @@
-﻿services:
+services:
   catalogdb:
     image: postgres
 
@@ -10,6 +10,9 @@
 
   orderdb:
     image: mcr.microsoft.com/mssql/server
+
+  messagebroker:
+    image: rabbitmq:management
 
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
@@ -28,6 +31,12 @@
     build:
       context: .
       dockerfile: Services/Discount/Discount.GRPS/Dockerfile
+
+  ordering.api:
+    image: ${DOCKER_REGISTRY-}orderingapi
+    build:
+      context: .
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
 
 volumes:
   postgres_catalog:
