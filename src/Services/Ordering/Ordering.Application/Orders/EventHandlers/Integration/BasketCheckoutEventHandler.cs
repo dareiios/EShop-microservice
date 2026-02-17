@@ -4,8 +4,7 @@ using Ordering.Application.Orders.Commands.CreateOrder;
 
 namespace Ordering.Application.Orders.EventHandlers.Integration
 {
-    //initialize rge order creation process upon receiving the basket
-    //???? что за iconsumer, что тут вообще происходит
+    //after BasketCheckoutEvent was send to rabbitmq. this handler handle the event from different service(basket)
     public class BasketCheckoutEventHandler(ISender sender, ILogger<BasketCheckoutEvent> logger)
         : IConsumer<BasketCheckoutEvent>
     {

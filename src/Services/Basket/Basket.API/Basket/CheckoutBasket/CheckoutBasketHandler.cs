@@ -31,7 +31,7 @@ namespace Basket.API.Basket.CheckoutBasket
             var eventMessage = command.CheckoutBasketDto.Adapt<BasketCheckoutEvent>();
             eventMessage.TotalPrice = basket.TotalPrice;
 
-            await publishEndpoint.Publish(eventMessage, cancellationToken);
+            await publishEndpoint.Publish(eventMessage, cancellationToken);//send event to rabbitmq(to different service=>BasketCheckoutEventHandler)
             await repository.DeleteBasketAsync(command.CheckoutBasketDto.UserName, cancellationToken);
             return new(true);
         }

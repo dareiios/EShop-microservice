@@ -20,6 +20,7 @@ namespace Ordering.Application
 
             //???
             services.AddFeatureManagement();
+            //go through all assembly and get class:IConsumer<T>. when there is event of T type in rabbitmq, execute it
             services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
 
             return services;

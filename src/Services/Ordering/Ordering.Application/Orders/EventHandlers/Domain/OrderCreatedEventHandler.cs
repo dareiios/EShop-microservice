@@ -3,7 +3,6 @@ using Microsoft.FeatureManagement;
 
 namespace Ordering.Application.Orders.EventHandlers.Domain
 {
-    //???
     public class OrderCreatedEventHandler(IPublishEndpoint publishEndpoint, IFeatureManager featureManager, ILogger<OrderCreatedEventHandler> logger)
         : INotificationHandler<OrderCreatedEvent>
     {
@@ -11,7 +10,7 @@ namespace Ordering.Application.Orders.EventHandlers.Domain
         {
             logger.LogInformation("Domain Event handled: {DomainEvent}", domainEvent.GetType().Name);
 
-            if (await featureManager.IsEnabledAsync("OrderFullfilment"))//а когда будет false???
+            if (await featureManager.IsEnabledAsync("OrderFullfilment"))
             {
                 var orderCreatedIntegrationEvent = domainEvent.order.ToOrderDto();
                 await publishEndpoint.Publish(orderCreatedIntegrationEvent, cancellationToken);//publish to rabbitmq

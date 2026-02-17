@@ -4,6 +4,7 @@
 
     public class GetOrders : ICarterModule
     {
+        //endpoint->logger(behavior of mediatr)->request handler->logger->endpoint(result)
         public void AddRoutes(IEndpointRouteBuilder app)
         {
             //почему asparameter? почему не сделать обычный request и его передать

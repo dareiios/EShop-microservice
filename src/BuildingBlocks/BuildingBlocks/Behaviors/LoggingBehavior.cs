@@ -16,7 +16,7 @@ namespace BuildingBlocks.Behaviors
 
             var timer = new Stopwatch();
             timer.Start();
-
+            //execute a handler
             var response = await next();
 
             timer.Stop();
